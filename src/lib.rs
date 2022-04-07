@@ -19,6 +19,9 @@ pub use visdom;
 use simplecss::StyleSheet;
 use visdom::Vis;
 
+pub mod widgets;
+
+pub mod module;
 
 #[derive(Default,Clone,Data,Lens)]
 struct DruidRuneState {
