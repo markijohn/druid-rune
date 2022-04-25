@@ -1,0 +1,44 @@
+fn widget(name, w) {
+    flex()
+    .must_fill_main_axis( true )
+    .cross_axis_alignment( CrossAxisAlignment::Center )
+    .with_child( label(name).fix_width(120.) )
+    .with_child( w )
+    .padding( 5.0 )
+    .border( Color::Rgba32(0xFFFFFFFF), 1.0 )
+    .padding( 5.0 )
+}
+
+pub fn main() {
+    //rune built-in types : https://rune-rs.github.io/book/types.html
+    flex::column() //like Flex::column()
+        .with_child( widget("Label", label("My Label")) )
+        .with_child( widget("Button", button("My Button") ) )
+        .with_child( widget("Checkbox", checkbox("My Checkbox") ) )
+        .with_child( widget("ProgressBar", progressbar() ) )
+        .with_child( widget("Painter", painter( |ctx| ctx.fill(ctx.size().to_rect(), Color::RED ) ).fix_size(200.,35.) ) )
+        //radiogroup
+        .with_child( widget("RadioGroup", radiogroup( ["Apple","Banana","Cherry"] ) ) )
+        .with_child( widget("Slider", slider() ) )
+        .with_child( widget("Stepper", stepper() ) )
+        .with_child( widget("TextBox", textbox() ) )
+        .with_child( widget("Switch", switch() ) )
+        //.with_child( widget("Spinner", spinner() ) ) //made slow
+        //.with_child( widget("Svg", svg(sample_svg()) ) ) //made very slow
+        //.with_child( widget("Image", image("image/druid_rune.png").fill_mode(FillStrat::None).fix_size( 110.0, 50.0 ) ) )
+
+}
+
+fn sample_svg() {
+`
+<svg xmlns="http://www.w3.org/2000/svg"
+ width="467" height="462">
+  <rect x="80" y="60" width="250" height="250" rx="20"
+      style="fill:#ff0000; stroke:#000000;stroke-width:2px;" />
+
+  <rect x="140" y="120" width="250" height="250" rx="40"
+      style="fill:#0000ff; stroke:#000000; stroke-width:2px;
+      fill-opacity:0.7;" />
+</svg>
+`
+}

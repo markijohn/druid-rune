@@ -1,0 +1,21 @@
+fn my_btn( name ) {
+    button( name )
+        .fix_size( 60. , 35. )
+        .on_click( || print(`Clicked button ${name}`) )
+        .env_scope( |env| {
+            env.set( BUTTON_BORDER_RADIUS, RoundedRectRadii::new(0. ,0. ,0., 0.) );
+            env.set( BUTTON_BORDER_WIDTH, 2. );
+            env.set( BUTTON_LIGHT, (0, 128,128) );
+            //env.set( BUTTON_DARK, (0, 128,128) );
+            env.set( TEXT_COLOR , (222,222,222) );
+        })
+}
+
+pub fn main() {
+    flex::row()
+        .must_fill_main_axis(true)
+        .main_axis_alignment( MainAxisAlignment::Center )
+        .with_child( my_btn("Styled") )
+        .with_child( my_btn("Styled") )
+        .with_child( button("Normal") )
+}

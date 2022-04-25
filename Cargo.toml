@@ -1,6 +1,6 @@
 [package]
-name = "druid-rune"
-version = "0.0.0"
+name = "druid-qwidget"
+version = "0.0.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -9,8 +9,16 @@ edition = "2021"
 serde = "1.0"
 serde_derive = "1.0"
 serde_json = "1.0"
-druid = "0.7.0"
-rune = {version="0.10.3"}
-rune-modules = {version="0.10.3", features=["serde_json"]}
+druid-widget-nursery = { git = "https://github.com/linebender/druid-widget-nursery" }
+rune = {version="0.11.0", git="https://github.com/rune-rs/rune.git"}
+rune-modules = {version="0.11.0", features=["serde_json"], git="https://github.com/rune-rs/rune.git"}
 visdom = "0.5.1"
 simplecss = "0.2.1"
+once_cell = "1.10.0"
+num-traits = "0.2.14"
+
+
+[dependencies.druid]
+git = "https://github.com/linebender/druid"
+rev = "fc05e965c85fced8720c655685e02478e0530e94" # update this when upgrading to newer druid
+features = ["image-all", "im"]

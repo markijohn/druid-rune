@@ -1,0 +1,28 @@
+fn custom_button() {
+    let draw_impl = |ctx| {
+        let bounds = ctx.size().to_rect();
+
+        //on mouse up
+        if ctx.is_hot() {
+            ctx.fill(bounds, Color::rgb8(0,103,187) );
+            ctx.stroke(bounds.inset(-0.5), Color::rgb8(0,140,255), 1.0);
+        }
+        //default idle
+        else {
+            ctx.fill(bounds, Color::rgb8(0,73,131) );
+        }
+
+        //on pressed
+        if ctx.is_active() {
+            ctx.fill(bounds, Color::rgb8(0,73,134) );
+        }
+    };
+    painter( draw_impl )
+    .on_click( || print("Clicked painter\n") )
+    .fix_size( 200. ,200. )
+    .center()
+}
+
+pub fn main() {
+    custom_button()
+}

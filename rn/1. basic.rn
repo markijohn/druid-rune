@@ -1,0 +1,6 @@
+/// Basic rune script
+/// main function must be return widget
+
+pub fn main() {
+    label("Hello Rune")
+}
